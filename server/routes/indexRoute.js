@@ -5,7 +5,6 @@ var controller = require('../controllers/indexController')
 
 router.get('/', controller.getLoginPage)
 
-
 router.post('/login', controller.login)
 router.post('/register', controller.register)
 
