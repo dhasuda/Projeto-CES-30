@@ -4,9 +4,10 @@ $('.message a').click(function(){
 
  $(document).ready(() => {
      $('#register-form').submit(e => {
+        var name = $('#register-name').val()
         var username = $('#register-username').val()
         var password = $('#register-password').val()
-        register(username, password)
+        register(name, username, password)
      })
 
      $('#login-form').submit(e => {
@@ -16,15 +17,15 @@ $('.message a').click(function(){
     })
  })
 
-register = (username, password) => {
-    console.log(username)
-    console.log(password)
-    var url = '/login';
+register = (name, username, password) => {
+
+    var url = '/register';
 
     $.ajax({
         url: url,
         type: "POST",
         data: { 
+            name: name,
             username: username,
             password: password
          },
@@ -33,9 +34,8 @@ register = (username, password) => {
 }
 
 login = (username, password) => {
-    console.log(username)
-    console.log(password)
-    var url = '/register';
+    
+    var url = '/login';
 
     $.ajax({
         url: url,

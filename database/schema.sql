@@ -1,10 +1,10 @@
 CREATE TABLE professor (
-	rm_professor int not null,
+	id_professor int not null identity,
 	nome varchar(200) not null,
 	usuario varchar(200) not null,
 	senha varchar(200) not null,
 	
-    PRIMARY KEY (rm_professor)
+    PRIMARY KEY (id_professor)
 );
 
 CREATE TABLE unidade (
@@ -16,12 +16,12 @@ CREATE TABLE unidade (
 
 CREATE TABLE unidade_professor (
 	id_unidade int not null,
-	rm_professor int not null,
+	id_professor int not null,
 	preferencial bit,
 
-	PRIMARY KEY (id_unidade, rm_professor),
+	PRIMARY KEY (id_unidade, id_professor),
 	FOREIGN KEY (id_unidade) REFERENCES unidade (id_unidade),
-	FOREIGN KEY (rm_professor) REFERENCES professor (rm_professor)
+	FOREIGN KEY (id_professor) REFERENCES professor (id_professor)
 );
 
 CREATE TABLE corretor (
@@ -61,7 +61,7 @@ CREATE TABLE unidade_corretor (
 );
 
 CREATE TABLE aluno (
-	rm_aluno int not null,
+	id_aluno int not null identity,
 	nome varchar(200) not null,
 	usuario varchar(200) not null,
 	senha varchar(200) not null,
@@ -70,7 +70,7 @@ CREATE TABLE aluno (
 	
 	id_unidade int not null,
 
-    PRIMARY KEY (rm_aluno),
+    PRIMARY KEY (id_aluno),
     FOREIGN KEY (id_unidade) REFERENCES unidade (id_unidade)
 );
 
@@ -127,13 +127,13 @@ CREATE TABLE prova (
 	avaliacao_nota float,
 	avaliacao_descricao varchar(500),
 	
-	rm_aluno int not null,
-	rm_professor int not null,
+	id_aluno int not null,
+	id_professor int not null,
 	id_categoria int not null,
 	
     PRIMARY KEY (id_prova),
-    FOREIGN KEY (rm_aluno) REFERENCES aluno (rm_aluno),
-    FOREIGN KEY (rm_professor) REFERENCES professor (rm_professor),
+    FOREIGN KEY (id_aluno) REFERENCES aluno (id_aluno),
+    FOREIGN KEY (id_professor) REFERENCES professor (id_professor),
     FOREIGN KEY (id_categoria) REFERENCES categoria_prova (id_categoria)
 );
 
@@ -144,14 +144,14 @@ CREATE TABLE atribuicao (
 	
 	id_prova int not null,
 	id_corretor int,
-	rm_professor int,
+	id_professor int,
 	professor_atribuidor int not null,
 	
 	PRIMARY KEY (datahora_atribuicao, id_prova),
 	FOREIGN KEY (id_prova) REFERENCES prova (id_prova),
 	FOREIGN KEY (id_corretor) REFERENCES corretor (id_corretor),
-	FOREIGN KEY (rm_professor) REFERENCES professor (rm_professor),
-	FOREIGN KEY (professor_atribuidor) REFERENCES professor (rm_professor)
+	FOREIGN KEY (id_professor) REFERENCES professor (id_professor),
+	FOREIGN KEY (professor_atribuidor) REFERENCES professor (id_professor)
 );
 
 CREATE TABLE comentario (
@@ -164,12 +164,12 @@ CREATE TABLE comentario (
 	
 	id_prova int not null,
 	id_corretor int,
-	rm_professor int,
+	id_professor int,
 	
     PRIMARY KEY (id_comentario),
     FOREIGN KEY (id_prova) REFERENCES prova (id_prova),
     FOREIGN KEY (id_corretor) REFERENCES corretor (id_corretor),
-    FOREIGN KEY (rm_professor) REFERENCES professor (rm_professor)
+    FOREIGN KEY (id_professor) REFERENCES professor (id_professor)
 );
 
 CREATE TABLE resultado_criterio (
@@ -191,10 +191,10 @@ CREATE TABLE comentario_padrao (
 	corpo nvarchar(max),
 	audio varchar(200),
 	
-	rm_professor int not null,
+	id_professor int not null,
 	
     PRIMARY KEY (id_comentario_padrao),
-    FOREIGN KEY (rm_professor) REFERENCES professor (rm_professor)
+    FOREIGN KEY (id_professor) REFERENCES professor (id_professor)
 );
 
 CREATE TABLE comentario_individual (
@@ -227,11 +227,11 @@ CREATE TABLE meta_corretor (
 	quantidade INT NOT NULL,
 	datahora_inicio datetime not null,
 	datahora_fim datetime not null,
-	rm_professor int not null,
+	id_professor int not null,
 
 	PRIMARY KEY (id_meta),
 	FOREIGN KEY (id_corretor) REFERENCES corretor (id_corretor),
-    FOREIGN KEY (rm_professor) REFERENCES professor (rm_professor)
+    FOREIGN KEY (id_professor) REFERENCES professor (id_professor)
 );
 
 CREATE TABLE prova_teste (

@@ -10,14 +10,15 @@
     <div class="login-page">
         <div class="form">
             <form id="register-form" class="register-form">
-                <input id="register-username" type="text" placeholder="username" required/>
-                <input id="register-password" type="password" placeholder="senha" required/>
+                <input id="register-name" name="name" type="text" placeholder="name" required/>
+                <input id="register-username" name="username" type="text" placeholder="username" required/>
+                <input id="register-password" name="password" type="password" placeholder="senha" required/>
                 <button>create</button>
                 <p class="message">Already registered? <a href="#">Sign In</a></p>
             </form>
             <form id="login-form" class="login-form">
-                <input id="login-username" type="text" placeholder="username" required/>
-                <input id="login-password" type="password" placeholder="password" required/>
+                <input id="login-username" name="username" type="text" placeholder="username" required/>
+                <input id="login-password" name="password" type="password" placeholder="password" required/>
                 <button>login</button>
                 <p class="message">Not registered? <a href="#">Create an account</a></p>
             </form>
