@@ -8,6 +8,7 @@ DROP TABLE resultado_criterio;
 DROP TABLE comentario;
 DROP TABLE atribuicao;
 DROP TABLE prova;
+DROP TABLE proposta;
 DROP TABLE restricao_criterio;
 DROP TABLE criterio;
 DROP TABLE categoria_prova;

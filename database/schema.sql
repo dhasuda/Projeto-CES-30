@@ -114,6 +114,15 @@ CREATE TABLE restricao_criterio (
     FOREIGN KEY (entao_criterio) REFERENCES criterio (id_criterio)
 );
 
+CREATE TABLE proposta (
+    id_proposta int not null identity,
+    nome varchar(500) not null,
+    arquivo varchar(200) not null,
+	rm_coordenador int,
+	
+    PRIMARY KEY (id_proposta)
+);
+
 CREATE TABLE prova (
     id_prova int not null identity,
     estado varchar(20) not null,
@@ -130,11 +139,13 @@ CREATE TABLE prova (
 	id_aluno int not null,
 	id_professor int not null,
 	id_categoria int not null,
+	id_proposta int not null,
 	
     PRIMARY KEY (id_prova),
     FOREIGN KEY (id_aluno) REFERENCES aluno (id_aluno),
     FOREIGN KEY (id_professor) REFERENCES professor (id_professor),
-    FOREIGN KEY (id_categoria) REFERENCES categoria_prova (id_categoria)
+    FOREIGN KEY (id_categoria) REFERENCES categoria_prova (id_categoria),
+	FOREIGN KEY (id_proposta) REFERENCES proposta (id_proposta)
 );
 
 CREATE TABLE atribuicao (

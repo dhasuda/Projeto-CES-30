@@ -7,7 +7,7 @@ $(document).ready(function() {
         }
     })
 
-    $('#upload-input').change(function() {
+    $('#create_button').on('click', function() {
         
          var propostaName = $('#name').val()
          $.ajax({
@@ -17,6 +17,7 @@ $(document).ready(function() {
                 nome: propostaName
             },
             success: function(data) {
+                data = JSON.parse(data)
                 if(data.success) {
                     swal({
                         text: "Upload realizado!",
