@@ -29,9 +29,7 @@ Query.execute = function(query, param, onSuccess, onError) {
             req.input(k, parseType(param[k]), param[k])
         }
     }
-    console.log('QUERY FINAL', query)
     req.query(query, (err, result) => {
-        console.log('ERROOOOOO', err)
         if(err) onError(err)
         else onSuccess(result)
     })

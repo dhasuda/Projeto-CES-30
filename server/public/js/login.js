@@ -49,6 +49,11 @@ login = (username, password) => {
 }
 
 goToLoggedPage = (data) => {
-    console.log(data)
+    console.log('HERE')
+    if (data.success) {
+        window.location.href = '/professor'
+    } else {
+        $('#msgAlertUsuario').show();
+    }
 }
 

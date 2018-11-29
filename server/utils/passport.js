@@ -11,22 +11,16 @@ module.exports = (passport) => {
             passReqToCallback: true
         },
         (req, username, password, done) => {
-            console.log('1')
+            
             Professor.findByUsername(username).then(result => {
-                console.log('2')
+                
                 if (result.length > 0) {
-                    console.log('3')
                     return done(null, false, { message: 'Invalid username.' })
                 } else {
-                    console.log('4')
                     var name = req.body.name
-                    console.log('4.1')
                     const saltRounds = 10
-                    console.log('4.2')
                     var secretPassword = bcrypt.hashSync(password, saltRounds)
-                    console.log('4.3')
                     Professor.createNewProfessor(name, username, secretPassword).then(result => {
-                        console.log('5')
                         return done(null, result[0])
                     }).catch(e => {
                         return done(null, false, { message: 'Something with db went wrong' })
@@ -62,11 +56,13 @@ module.exports = (passport) => {
     ))
 
         passport.serializeUser((user, done) => {
+            console.log('SERIALIZING...')
             console.log('USER', user)
             done(null, 1)
         })
 
         passport.deserializeUser((id, done) => {
+            console.log('DESERIALIZING...')
             console.log('ID', id)
             done(null, 1)
         })

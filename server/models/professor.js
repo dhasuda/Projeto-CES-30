@@ -13,4 +13,9 @@ Professor.findByUsername = (username) => {
     return Query.run(query, {username: username})
 }
 
+Professor.getAll = () => {
+    var query = 'select * from professor'
+    return Query.run(query)
+}
+
 module.exports = Professor

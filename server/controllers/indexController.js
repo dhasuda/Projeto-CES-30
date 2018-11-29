@@ -7,27 +7,32 @@ exports.getLoginPage = (req, res) => {
 exports.login = (req, res, next) => {
     console.log('LOGIN')
     return passport.authenticate('professorLogin', (err, user, info) => {
+        console.log('AUTHENTICATION COMPLETE')
         if (err) {
             console.log('ERRO', err)
+            return res.json({success: false})
         }
         else if (!user) {
             console.log('NOT A USER')
+            return res.json({success: false})
         } else {
-            res.send('oi')
+            return res.json({success: true})
         }
       })(req, res, next)
 }
 
 exports.register = (req, res, next) => {
-    console.log('REGISTER')
     return passport.authenticate('newProfessor', (err, user, info) => {
+        console.log('AUTHENTICATION COMPLETE')
         if (err) {
             console.log('ERRO', err)
+            return res.json({success: false})
         }
         else if (!user) {
             console.log('NOT A USER')
+            return res.json({success: false})
         } else {
-            res.send('oi')
+            return res.json({success: true})
         }
         
 
