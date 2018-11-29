@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<%- include('../commons/head_common.ejs') %>
+	<%- include('../commons/head_datatables.ejs') %>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+	<!-- Navigation-->
+	<%- include('nav.ejs') %>
+
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="card mb-3">
+						<div class="card-body ui segment dimmable">
+							<div class="ui active inverted dimmer">
+								<div class="ui text loader">Carregando...</div>
+							</div>
+							<form id="frmCreateRedacao">
+								<div class="form-group">
+									<select id="spColetanea" class="selectpicker" title="Selecione a Proposta" data-size="7" data-live-search="true" required></select>
+								</div>
+								<div class="form-group">
+									<select id="spCategoria" class="selectpicker" title="Selecione as Categorias" required></select>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm- col-xl-4">
+											<input type="text" class="form-control" id="semana" placeholder="Número da Prova" required>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="row">
+										<div class="col-sm-6 col-xl-4">
+											<div class="input-group date" id="dateInput" data-target-input="nearest" data-toggle="tooltip" data-placement="top" title="Selecione a data e a hora limites para submissão. O aluno terá até esse momento para alterar sua submissão final.">
+												<input id="date" type="text" class="form-control datetimepicker-input" data-target="#dateInput" required/>
+												<div class="input-group-append" data-target="#dateInput" data-toggle="datetimepicker">
+													<div class="input-group-text"><i class="fa fa-calendar"></i></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<select id="spTurmas" class="selectpicker" data-size="7" <%= data.turmas.length == 0 ? ""  : "multiple data-actions-box='true'" %> title="Selecione as Turmas" data-selected-text-format="count > 2" required></select>
+									<button id="btnExibirAlunos" type="button" class="btn btn-dark" data-toggle="tooltip" title="Exibir todos os alunos com redações já submetidas">Exibir alunos</button>
+								</div>
+								<div class="form-group mt-5">
+									<div class="table-responsive">
+										<table id="table" class="table table-bordered" style="width:100%"></table>
+									</div>
+								</div>
+								<div class="form-group mt-5">
+									<button id="btnDelegar" type="submit" class="btn btn-success">Disponibilizar Proposta</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 mb-3">
+					<div class="card">
+						<div class="card-header">
+							Disponibilização de Redação para Alunos
+						</div>
+						<div class="card-body">
+							<p align="justify">Tela de disponibilização de propostas para os alunos desenvolverem as redações. Deve ser informada a proposta, a categoria da redação, a data limite de submissão por parte do aluno, além da seleção de alunos que receberão as tarefas.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footers-->
+		<%- include('../commons/footer_common.ejs') %>
+		<%- include('../commons/footer_datatables.ejs') %>
+		
+		<!-- Custom scripts for this page-->
+		<script src="<%= asset('/js/sweetalert.min.js') %>"></script>
+		<script src="<%= asset('/js/tempusdominus-bootstrap-4.min.js') %>"></script>
+		<script src="<%= asset('/js/custom/professor/prova_create.js') %>"></script>
+	</div>
+</body>
+
+</html>

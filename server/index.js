@@ -43,6 +43,10 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery.easing'))
 app.use('/js', express.static(__dirname + '/node_modules/sweetalert/dist'))
 app.use('/js', express.static(__dirname + '/node_modules/binaryjs/dist'))
 app.use('/js', express.static(__dirname + '/node_modules/hashids/dist/'))
+app.use('/js', express.static(__dirname + '/node_modules/moment'))
+app.use('/js', express.static(__dirname + '/node_modules/moment/min'))
+app.use('/js', express.static(__dirname + '/node_modules/moment/locale'))
+app.use('/js', express.static(__dirname + '/node_modules/moment-timezone/builds'))
 
 // JS and CSS
 app.use('/js', express.static(__dirname + '/node_modules/tempusdominus-bootstrap-4/build/js'))

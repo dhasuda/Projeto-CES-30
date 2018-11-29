@@ -38,10 +38,13 @@ module.exports = (passport) => {
             passwordField: 'password'
         },
         (username, password, done) => {
+            console.log('PASSPORT')
             Professor.findByUsername(username).then(result => {
+                console.log('RESULT', result)
                 if (result.length > 0) {
                     var secretPassword = result[0].senha
                     if (bcrypt.compareSync(password, secretPassword)) {
+                        console.log('hereeeee')
                         return done(null, result[0])
                     } else {
                         return done(null, false, { message: 'Invalid user or password' })    
@@ -56,10 +59,12 @@ module.exports = (passport) => {
     ))
 
     passport.serializeUser((user, done) => {
+        console.log('serializing', user)
         done(null, user)
     })
 
     passport.deserializeUser((id, done) => {
+        console.log('deserializing', id)
         done(null, id)
     })
 

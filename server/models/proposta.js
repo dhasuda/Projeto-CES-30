@@ -19,7 +19,7 @@ Proposta.findByProfessor = (professorId) => {
                         'inner join unidade_professor uc on a.id_unidade = uc.id_unidade and uc.preferencial = 1) unidade_pref on unidade_pref.proposta = c.id_proposta ' +
                     'group by c.id_proposta ' +
                     'order by nome asc'
-    console.log('QUERY', query, professorId)
+    
     return Query.run(query, {professorId: professorId})
 }
 

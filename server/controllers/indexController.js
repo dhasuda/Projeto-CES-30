@@ -5,7 +5,9 @@ exports.getLoginPage = (req, res) => {
 }
 
 exports.login = (req, res, next) => {
+    console.log('LOGIN')
     passport.authenticate('professorLogin', (err, user, info) => {
+        console.log('AUTHENTICATED')
         if (err) {
             return res.json({success: false})
         }
