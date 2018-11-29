@@ -13,18 +13,7 @@
 		</script>
 
 		<script src="<%= asset('/js/jquery.min.js') %>"></script>
-		<script src="<%= asset('/js/socket.io.js') %>"></script>
 		<script>
-
-			var socket = io.connect(window.location.origin);
-			socket.emit('pulse', {
-				user: serverUser.id,
-				role: serverUser.role
-			})
-
-			window.onbeforeunload = function() {
-				socket.disconnect()
-			}
 
 		</script> 
 
@@ -33,6 +22,6 @@
 		<!-- Core plugin JavaScript-->
 		<script src="<%= asset('/js/jquery.easing.min.js') %>"></script>
 		<!-- Custom scripts for all pages-->
-		<script src="<%= asset('/js/sb-admin.min.js') %>"></script>
+		<script src="<%= asset('/js/sb-admin.js') %>"></script>
 		<!-- Selectpicker customization script-->
 		<script src="<%= asset('/js/bootstrap-select.min.js') %>"></script>

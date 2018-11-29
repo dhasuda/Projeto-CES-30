@@ -64,6 +64,7 @@ module.exports = (passport) => {
         passport.deserializeUser((id, done) => {
             console.log('DESERIALIZING...')
             console.log('ID', id)
+            
             done(null, 1)
         })
 

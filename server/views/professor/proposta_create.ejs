@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<%- include('../commons/head_common.ejs') %>
+
+	<!-- Custom css for this page-->
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+	<!-- Navigation-->
+    <%- include('nav.ejs') %>
+    
+    <h1>
+        Criar Proposta
+    </h1>
+
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="card mb-3">
+						<div class="card-body">
+							<form id="submitCreateColetanea">
+								<div class="form-group">
+									<input type="text" class="form-control" id="name" placeholder="Nome" required>
+								</div>
+								<div class="form-group">
+									<a class="btn btn-success btn-create text-light">Criar</a>
+									<button type="submit" id="btn-submit-hide" class="btn btn-success" style="display: none;">Criar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 mb-3">
+					<div class="card">
+						<div class="card-header">
+							Criação de Proposta
+						</div>
+						<div class="card-body">
+							<p align="justify">Inserir o nome da proposta a ser cadastrada. Ao clicar em 'Criar', será solicitada a seleção de um arquivo referente à proposta. Antes de inserir, verifique se ela já foi cadastrada anteriormente, acessando a tela de 'Proposta -> Consultar'; caso positivo, verificar se ela atende às necessidades, ou se será realmente necessário criar uma nova proposta.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footers-->
+		<%- include('../commons/footer_common.ejs') %>
+
+		<!-- Custom scripts for this page-->
+		<script src="<%= asset('/js/sweetalert.min.js') %>"></script>
+		<script src="<%= asset('/js/custom/professor/proposta_create.js') %>"></script>
+	</div>
+</body>
+
+</html>
