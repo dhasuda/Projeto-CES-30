@@ -1,0 +1,186 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Proposta">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseColetanea" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-archive"></i>
+                        <span class="nav-link-text">Proposta</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseColetanea">
+                        <li>
+                            <a href="/coordenador/proposta/criar">Cadastrar</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/proposta/visualizar">Consultar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Redação">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRedacao" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-folder"></i>
+                        <span class="nav-link-text">Redação</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseRedacao">
+                        <li>
+                            <a href="/coordenador/redacao/disponibilizar">Disponibilizar Proposta</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/redacao/disponibilizadas">Propostas Disponibilizadas</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/redacao/delegar">Delegar para Corretor</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/redacao/correcao/andamento">Correções em Andamento</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/redacao/correcao/finalizada">Já Corrigidas</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/redacao/correcao/publicada">Já Publicadas</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/redacao/delegar/teste">Criar Teste</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Corretor">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCorretor" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-users"></i>
+                        <span class="nav-link-text">Corretor</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseCorretor">
+                        <li>
+                            <a href="/coordenador/corretor/visualizar">Meus corretores</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/corretor/todos">Visualizar Todos</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Análise">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAnalises" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-area-chart"></i>
+                        <span class="nav-link-text">Análise</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseAnalises">
+                        <li>
+                            <a href="/coordenador/metrica/fluxo/redacoes">Fluxo das Redações</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/metrica/nota/media">Nota Média</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/metrica/correcao/teste">Correções Teste</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/metrica/avaliacao/corretores">Avaliação de corretores</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Aluno">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseAluno" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-users"></i>
+                        <span class="nav-link-text">Aluno</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseAluno">
+                        <li>
+                            <a href="/coordenador/aluno/visualizar">Consultar</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/turma/visualizar">Turmas</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Comentário Padrão">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComentarioPadrao" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-sticky-note"></i>
+                        <span class="nav-link-text">Comentário Padrão</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseComentarioPadrao">
+                        <li>
+                            <a href="/coordenador/comentario/criar">Cadastrar</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/comentario/visualizar">Consultar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Critério">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCriterio" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-edit"></i>
+                        <span class="nav-link-text">Critério</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseCriterio">
+                        <li>
+                            <a href="/coordenador/criterio/criar">Cadastrar</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/criterio/visualizar">Consultar</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/criterio/restricao/criar">Adicionar Restrição</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/criterio/restricao/visualizar">Consultar Restrições</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Log">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseLog" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-history"></i>
+                        <span class="nav-link-text">Log</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapseLog">
+                        <li>
+                            <a href="/coordenador/log/aluno">Alunos</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/log/corretor">Corretores</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/log/pedagogico">Pedagógico</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pedagógico">
+                    <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapsePedagogico" data-parent="#exampleAccordion">
+                        <i class="fa fa-fw fa-users"></i>
+                        <span class="nav-link-text">Pedagógico</span>
+                    </a>
+                    <ul class="sidenav-second-level collapse" id="collapsePedagogico">
+                        <li>
+                            <a href="/coordenador/pedagogico/criar">Cadastrar</a>
+                        </li>
+                        <li>
+                            <a href="/coordenador/pedagogico/visualizar">Consultar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Configuração">
+                    <a class="nav-link" href="/coordenador/configuracao">
+                        <i class="fa fa-fw fa-cog"></i>
+                        <span class="nav-link-text">Configuração</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav sidenav-toggler">
+                <li class="nav-item">
+                    <a class="nav-link text-center" id="sidenavToggler">
+                        <i class="fa fa-fw fa-angle-left"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="modal" data-target="#logoutModal">
+                        <i class="fa fa-fw fa-sign-out"></i>Sair
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
