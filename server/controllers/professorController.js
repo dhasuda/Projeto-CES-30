@@ -273,3 +273,18 @@ exports.alunoCreatePost = (req, res) => {
         res.json({success: false})
     })
 }
+
+exports.insertNotas = (req, res) => {
+    var notas = req.body.allValues
+    var criterios = req.body.criterios
+    var idProva = req.body.idProva
+    Prova.attributeGrades(notas, criterios, idProva, datetime.getDateTime()).then(() => {
+        Prova.setCorrected(idProva).then(() => {
+            res.json({success: true})
+        }).catch(err => {
+            res.json({success: false})
+        })
+    }).catch(err => {
+        res.json({success: false})
+    })
+}

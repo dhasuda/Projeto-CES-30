@@ -31,5 +31,6 @@ router.post('/proposta/subir', controller.uploadProposta)
 router.post('/categoria/subir', controller.uploadCategoria)
 router.post('/aluno/delegar', controller.createProva)
 router.post('/aluno/criar', controller.alunoCreatePost)
+router.post('/prova/notas', controller.insertNotas)
 
 module.exports = router

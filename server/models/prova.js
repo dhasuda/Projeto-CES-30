@@ -39,4 +39,23 @@ Prova.findByStateAndCoordenador = function(professorId, states) {
     })
 }
 
+Prova.attributeGrades = function(notas, criterios, idProva, datahora) {
+    var query = ""
+
+    var i = 0
+    notas.forEach(n => {
+        query +=    " insert into resultado_criterio (notaparcial, datahora_comentario, corpo, id_criterio, id_prova) " +
+                    " values (" + n + ", @datahora, '', " + criterios[i] + ", @idProva); "
+        i++
+    })
+
+    return Query.run(query, {datahora: datahora, idProva: idProva})
+
+}
+
+Prova.setCorrected = function(idProva) {
+    var query = "update prova set estado = 'corrected' where id_prova = @idProva"
+    return Query.run(query, {idProva: idProva})
+}
+
 module.exports = Prova
