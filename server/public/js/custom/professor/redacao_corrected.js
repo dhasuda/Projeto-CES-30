@@ -22,8 +22,7 @@ $(document).ready(function() {
 
             var newRow = table.row.add([
                 prova.id,
-                'Redação ' + prova.semana + 
-                ' </br><span style="opacity: 0.5"> ' + moment.utc(prova.pacote).tz(getTimezone()).fromNow() + '</span>',
+                'Prova ' + prova.semana,
                 '<a>' + prova.coletanea + '</a>' +
                 '</br><span style="opacity: 0.5"> ' + prova.categoria + '</span>',
                 prova.nome_aluno + '</br><span style="opacity: 0.5"> ' + prova.aluno + '</span>',

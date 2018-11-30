@@ -135,7 +135,7 @@ $(document).ready(function() {
                         } else {
                             swal({
                                 title: "Problema ao excluir!",
-                                text: "Critério presente em alguma redação!",
+                                text: "",
                                 icon: "warning",
                                 timer: 3000,
                                 closeOnEsc: false,
