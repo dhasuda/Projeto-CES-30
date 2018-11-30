@@ -35,6 +35,39 @@ exports.criterioView = (req, res) => {
     }
 }
 
+exports.provasCorrected = (req, res) => {
+    if(req.query.json) {
+        Prova.findByStateAndCoordenador(req.user.id_professor, [State.published(), State.corrected()]).then(result => {
+            data = result
+            index = 0;
+
+            var next = function() {
+                if(index < data.length) {
+                    prova = data[index]
+                    index++
+    
+                    Prova.getNota(prova.id).then(result => {
+                        prova.nota = result[0].nota
+                        next()
+                    }).catch(err => {
+                        res.send(err)
+                    })
+                } else {
+                    var allData = {
+                        data: data
+                    }
+                    res.send(JSON.stringify(allData))
+                }
+            }
+            next()
+        }).catch(err => {
+            res.send(err)
+        })    
+    } else {
+        res.render('professor/redacao_corrected.ejs')
+    }
+}
+
 exports.criterioCreate = (req, res) => {
     if(req.query.json) {
         Categoria.getAll().then(result => {

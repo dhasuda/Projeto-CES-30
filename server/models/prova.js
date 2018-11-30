@@ -29,7 +29,7 @@ Prova.findByStateAndCoordenador = function(professorId, states) {
                     " LEFT OUTER JOIN aluno A ON R.id_aluno = A.id_aluno " +
                     " LEFT OUTER JOIN categoria_prova CR ON R.id_categoria = CR.id_categoria  " +
                     " LEFT OUTER JOIN proposta C ON R.id_proposta = C.id_proposta   " +
-                    " WHERE R.estado IN ('not submitted', 'not corrected') AND   " +
+                    " WHERE R.estado IN (@states) AND   " +
                         " R.id_professor = 1   " +
                     " ORDER BY len(R.semana) DESC, R.semana DESC "
     
@@ -55,6 +55,14 @@ Prova.attributeGrades = function(notas, criterios, idProva, datahora) {
 
 Prova.setCorrected = function(idProva) {
     var query = "update prova set estado = 'corrected' where id_prova = @idProva"
+    return Query.run(query, {idProva: idProva})
+}
+
+Prova.getNota = function(idProva) {
+    var query = " SELECT IIF(SUM(notaparcial) is null, 0, SUM(notaparcial)) as nota   " +
+                " FROM resultado_criterio   " +
+                " WHERE id_prova = @idProva "
+
     return Query.run(query, {idProva: idProva})
 }
 

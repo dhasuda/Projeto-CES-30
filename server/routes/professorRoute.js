@@ -15,6 +15,8 @@ router.get('/aluno/visualizar', controller.alunoView)
 router.get('/turma/visualizar', controller.turmaView)
 router.get('/aluno/criar', controller.alunoCreate)
 
+router.get('/prova/correcao/finalizada', controller.provasCorrected)
+
 router.get('/prova/disponibilizadas', controller.provasDisponibilizadas)
 router.get('/prova/correcao/:id', controller.correctProva)
 
