@@ -12,8 +12,10 @@ router.get('/prova/disponibilizar', controller.disponibilizarProva)
 
 router.get('/aluno/visualizar', controller.alunoView)
 router.get('/turma/visualizar', controller.turmaView)
+router.get('/aluno/criar', controller.alunoCreate)
 
 router.post('/proposta/subir', controller.uploadProposta)
 router.post('/aluno/delegar', controller.createProva)
+router.post('/aluno/criar', controller.alunoCreatePost)
 
 module.exports = router

@@ -6,6 +6,12 @@ var Aluno = function(data) {
 
 Aluno.prototype.data = {}
 
+Aluno.newAluno = function(nome, turma, unidadeId) {
+    const query =   " insert into aluno (nome, usuario, senha, turma, ativo, id_unidade) values (@nome, @nome, '0', @turma, 1, @unidadeId)"
+    
+    return Query.run(query, {nome: nome, turma: turma, unidadeId: unidadeId})
+}
+
 Aluno.getAllClassroomsForCoordenador = function(id) {
     const query =   " SELECT turma FROM aluno a  " +
                     " INNER JOIN unidade_professor uc ON uc.id_unidade = a.id_unidade AND uc.preferencial = 1  " +

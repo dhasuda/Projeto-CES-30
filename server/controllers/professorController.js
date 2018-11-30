@@ -2,6 +2,7 @@ var Proposta = require('../models/proposta')
 var Categoria = require('../models/categoria')
 var Aluno = require('../models/aluno')
 var Prova = require('../models/prova')
+var Unidade = require('../models/unidade')
 
 exports.getLoginPage = (req, res) => {
     console.log('req', req.user)
@@ -108,6 +109,22 @@ exports.turmaView = (req, res) => {
     }
 }
 
+exports.alunoCreate = (req, res) => {
+    if (req.query.json) {
+        var data = {
+            unidades: null
+        }
+        Unidade.getAllFromProfessor(req.user.id_professor).then(result => {
+            data.unidades = result
+            res.send(JSON.stringify(data))
+        }).catch(err => {
+            res.send(err)
+        })
+    } else {
+        res.render('professor/aluno_create.ejs')
+    }
+}
+
 exports.uploadProposta = (req, res) => {
     Proposta.create(req.body.nome, req.user.id_professor).then(result => {
         res.send(JSON.stringify({success: true}))
@@ -143,9 +160,16 @@ exports.createProva = (req, res) => {
     var students = req.body.alunos
     console.log('HERE', data, students)
     res.json({success: true});
-    // Prova.savePackage(students, data).then(() => {
-    //     res.json({success: true});
-    // }).catch(err => {
-    //     res.json({success: false});
-    // })
+}
+
+exports.alunoCreatePost = (req, res) => {
+    var nome = req.body.nome
+    var turma = req.body.turma
+    var idUnidade = req.body.idUnidade
+    
+    Aluno.newAluno(nome, turma, idUnidade).then(() => {
+        res.json({success: true})
+    }).catch(err => {
+        res.json({success: false})
+    })
 }
