@@ -78,6 +78,16 @@ exports.disponibilizarProva = (req, res) => {
 
 }
 
+exports.alunoTurma = (req, res) => {
+    var id_professor = req.user.id_professor
+
+    Aluno.findByProfessorAndTurma(id_professor, req.query.turmas).then(result => {
+        res.send(JSON.stringify(result))
+    }).catch(err => {
+        res.send(null)
+    })
+}
+
 exports.alunoView = (req, res) => {
     if (req.query.json) {
         var id_professor = req.user.id_professor

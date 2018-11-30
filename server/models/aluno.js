@@ -49,4 +49,21 @@ Aluno.getTurmasByCoordenador = function(professorId) {
     return Query.run(query, {professorId: professorId})
 }
 
+Aluno.findByProfessorAndTurma = function(id_professor, turmas) {
+    var turma_query = ''
+
+    turmas.forEach(function(turma) {
+        turma_query += '\'' + turma + '\','
+    })
+    turma_query = turma_query.slice(0, -1)
+    
+    var query = 'SELECT a.id_aluno, a.nome, a.turma ' +
+                'FROM aluno a ' +
+                'INNER JOIN unidade_professor uc ON uc.id_unidade = a.id_unidade ' +
+                'WHERE uc.id_professor = ' + id_professor + ' AND a.turma IN(' + turma_query + ') ' +
+                'ORDER BY turma ASC, nome ASC'
+    
+    return Query.run(query)
+}
+
 module.exports = Aluno

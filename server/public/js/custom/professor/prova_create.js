@@ -80,10 +80,6 @@ $(document).ready(function() {
                 "visible": false
             }
         ],
-        buttons: [
-            { extend: 'all', text: 'Selecionar Tudo' },
-            { extend: 'clean', text: 'Limpar Seleção' }
-        ],
         language: {
             url: "/json/datatables/portuguese-brasil.json"
         },
@@ -93,12 +89,12 @@ $(document).ready(function() {
     });
 
     $('#table tbody').on('click', 'tr', function () {
+        console.log('HERE')
         $(this).toggleClass('selected');
     });
 
     // datetime picker
     $('#dateInput').datetimepicker({
-        locale: 'pt-BR',
         minDate: moment(),
         format: 'DD/MM/YYYY HH:mm'
     });
@@ -168,15 +164,15 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     var info = JSON.parse(data)
-                    var results_qty = info[0].length
+                    var results_qty = info.length
                     
                     table.clear();
                     table.draw();
                     for(var i = 0; i < results_qty; i++) {
                         table.row.add([
-                            info[0][i].rm_aluno,
-                            info[0][i].nome,
-                            info[0][i].turma
+                            info[i].id_aluno,
+                            info[i].nome,
+                            info[i].turma
                         ]).draw(false);
                     }
                 }

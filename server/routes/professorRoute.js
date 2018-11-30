@@ -9,6 +9,7 @@ router.get('/proposta/visualizar', controller.propostaView)
 router.get('/proposta/buscar/:id', controller.propostaSpecific)
 
 router.get('/prova/disponibilizar', controller.disponibilizarProva)
+router.get('/aluno/turma', controller.alunoTurma)
 
 router.get('/aluno/visualizar', controller.alunoView)
 router.get('/turma/visualizar', controller.turmaView)
