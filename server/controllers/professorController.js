@@ -20,6 +20,21 @@ exports.categoriaCreate = (req, res) => {
     res.render('professor/categoria_create.ejs')
 }
 
+exports.criterioView = (req, res) => {
+    if(req.query.json) {
+        Criterio.getAll().then(result => {
+            const data = result
+            
+            res.send(JSON.stringify(data))
+            
+        }).catch(err => {
+            res.send(err)
+        })
+    } else {
+        res.render('professor/criterio_view.ejs')
+    }
+}
+
 exports.criterioCreate = (req, res) => {
     if(req.query.json) {
         Categoria.getAll().then(result => {

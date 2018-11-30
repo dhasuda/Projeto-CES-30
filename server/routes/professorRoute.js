@@ -22,6 +22,8 @@ router.get('/prova/getCriterios', controller.getCriterios)
 
 router.get('/categoria/criar', controller.categoriaCreate)
 
+router.get('/criterio/visualizar', controller.criterioView)
+
 router.get('/criterio/criar', controller.criterioCreate)
 router.post('/criterio/criar', controller.criterioCreatePost)
 

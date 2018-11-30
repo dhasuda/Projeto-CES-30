@@ -22,4 +22,10 @@ Criterio.getFromProva = function(provaId) {
     return Query.run(query, {provaId: provaId})
 }
 
+Criterio.getAll = function() {
+    var query = 'SELECT cr.nome categoria, c.nome criterio, c.nota_total nota, c.id_criterio id_criterio, c.descricao descricao, c.passo passo, c.id_categoria id_categoria FROM criterio c LEFT JOIN categoria_prova cr ON c.id_categoria = cr.id_categoria ORDER BY categoria ASC, criterio ASC'
+
+    return Query.run(query)
+}
+
 module.exports = Criterio
