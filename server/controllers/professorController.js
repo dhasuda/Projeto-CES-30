@@ -226,7 +226,7 @@ exports.uploadCategoria = (req, res) => {
     Categoria.create(req.body.nome).then(() => {
         res.json({success: true})
     }).catch(err => {
-        res.json({success: true})
+        res.json({success: false})
     })
 }
 
