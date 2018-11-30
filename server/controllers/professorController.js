@@ -77,6 +77,37 @@ exports.disponibilizarProva = (req, res) => {
 
 }
 
+exports.alunoView = (req, res) => {
+    if (req.query.json) {
+        var id_professor = req.user.id_professor
+
+        Aluno.findByProfessor(id_professor).then(result => {
+            data = result
+            res.send(JSON.stringify(data))
+        }).catch(err => {
+            res.send(err)
+        })
+    } else {
+        res.render('professor/aluno_view.ejs')
+    }
+}
+
+exports.turmaView = (req, res) => {
+    if (req.query.json) {
+        var data = {
+            turmas: null
+        }
+        Aluno.getTurmasByCoordenador(req.user.id_professor).then(result => {
+            data.turmas = result
+            res.send(JSON.stringify(data))
+        }).catch(err => {
+            res.send(err)
+        })
+    } else {
+        res.render('professor/turma_view.ejs')
+    }
+}
+
 exports.uploadProposta = (req, res) => {
     Proposta.create(req.body.nome, req.user.id_professor).then(result => {
         res.send(JSON.stringify({success: true}))

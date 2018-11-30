@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<%- include('../commons/head_common.ejs') %>
+	<%- include('../commons/head_datatables.ejs') %>
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+	<!-- Navigation-->
+	<%- include('nav.ejs') %>
+
+	<div class="content-wrapper">		
+		<div class="container-fluid">
+			<div class="card mb-3">
+				<div class="card-body ui segment dimmable">
+					<div class="ui active inverted dimmer">
+						<div class="ui text loader">Carregando...</div>
+					</div>
+					<div class="table-responsive">
+						<table id="table" class="table table-bordered" style="width:100%">
+							<thead>
+								<tr>
+									<th>Turma</th>
+									<th>Total de redações</th>
+									<th>Redações não submetidas</th>
+									<th>Redações entregues</th>
+									<th>Redações em correção</th>
+									<th>Redações corrigidas</th>
+									<th>Redações publicadas</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footers-->
+		<%- include('../commons/footer_common.ejs') %>
+		<%- include('../commons/footer_datatables.ejs') %>
+
+		<!-- Custom scripts for this page-->
+		<script src="<%= asset('/js/custom/professor/turma_view.js') %>"></script>
+	</div>
+</body>
+
+</html>
