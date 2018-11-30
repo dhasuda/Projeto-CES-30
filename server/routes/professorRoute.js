@@ -26,6 +26,8 @@ router.get('/categoria/criar', controller.categoriaCreate)
 
 router.get('/criterio/visualizar', controller.criterioView)
 
+router.get('/metrica/nota/media', controller.averageGrade)
+
 router.get('/criterio/criar', controller.criterioCreate)
 router.post('/criterio/criar', controller.criterioCreatePost)
 

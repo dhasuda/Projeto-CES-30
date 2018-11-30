@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<%- include('../commons/head_common.ejs') %>
+	<link href="/css/bootstrap-select.min.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+	<!-- Navigation-->
+	<%- include('nav.ejs') %>
+
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<div class="jumbotron">
+				<h4 id="total_redacoes">Notas médias</h4>
+				<p>Os gráficos mostram a média das notas atribuídas para as redações já publicadas. As redações podem estar agrupadas pelo(a) corretor(a) ao(à) qual elas foram delegadas, ou pela turma da qual o(a) aluno(a) que a redigiu faz parte, ou ainda pela categoria à qual pertencem. No seletor abaixo escolha como deseja agrupá-las. As notas das redações foram todas convertidas para uma escala que vai de zero a dez.</p>
+				<select id="filtro" class="selectpicker" title="Selecione um filtro" required>
+					<option value="1">Turmas</option>
+					<option value="2">Categoria</option>
+				</select>
+			</div>
+			<div id="chart_container" class="jumbotron">
+				<canvas id="flux_chart" class="chartjs-render-monitor">
+			</div>
+			<button id="raw-data-btn" type="button" class="btn btn-dark">Baixar dados</button>
+		</div>
+
+		<!-- Footers-->
+		<%- include('../commons/footer_common.ejs') %>
+
+		<!-- Custom scripts for this page-->
+		<script src="/js/Chart.min.js"></script>
+		<script src="/js/bootstrap-select.min.js"></script>		
+		<script src="/js/custom/professor/metric_average_grade.js"></script>
+	</div>
+</body>
+
+</html>

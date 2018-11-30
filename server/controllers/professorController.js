@@ -6,6 +6,7 @@ var Unidade = require('../models/unidade')
 var State = require('../models/state')
 var datetime = require('../utils/datetime')
 var Criterio = require('../models/criterio')
+var Metrica = require('../models/metrica')
 
 exports.getLoginPage = (req, res) => {
     console.log('req', req.user)
@@ -32,6 +33,30 @@ exports.criterioView = (req, res) => {
         })
     } else {
         res.render('professor/criterio_view.ejs')
+    }
+}
+
+exports.averageGrade = (req, res) => {
+    if (req.query.json) {
+        var data = {
+            turmas: null,
+            categorias: null
+        }        
+        Metrica.getAverageByClassFromCoordenador(req.user.id_professor).then(result => {
+            data.turmas = result
+
+            Metrica.getAverageByCategoriaFromCoordenador(req.user.id_professor).then(result => {
+                data.categorias = result
+                res.send(JSON.stringify(data))
+            }).catch(err => {
+                res.send(err)
+            })
+        }).catch(err => {
+            res.send(err) 
+        })
+  
+    } else {
+        res.render('professor/metric_average_grade.ejs')
     }
 }
 
