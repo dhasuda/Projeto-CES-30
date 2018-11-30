@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<%- include('../commons/head_common.ejs') %>
+	<%- include('../commons/head_datatables.ejs') %>
+
+	<!-- Custom css for this page-->
+	<link href="<%= asset('/css/bootstrap-select.min.css') %>" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+	<!-- Navigation-->
+	<%- include('nav.ejs') %>
+
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="card mb-3">
+						<div class="card-body ui segment dimmable">
+							<div class="ui active inverted dimmer">
+								<div class="ui text loader">Carregando...</div>
+							</div>
+							<form id="submitCreateCriterio">
+								<div class="form-group">
+									<select name="category" id="category" class="selectpicker" title="Categoria" required></select>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="name" name="name" placeholder="Nome" required>
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" id="description" name="description" placeholder="Descrição" rows="5" required></textarea>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="totalgrade" name="totalgrade" placeholder="Nota Total" required>
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="passo" name="passo" placeholder="Passo" pattern="^\d+(\.\d+)?" title="Por favor insira um número com casa decimal separada por ponto." required>
+								</div>
+								<div class="form-group">
+									<button id="btnCriar" type="submit" class="btn btn-success">Criar</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 mb-3">
+					<div class="card">
+						<div class="card-header">
+							Criação de Critério
+						</div>
+						<div class="card-body">
+							<p align="justify">Informar a categoria que o critério a ser inserido se refere, além de seu nome, sua descrição, sua nota total e seu passo (escala / intervalo entre possíveis notas).</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footers-->
+		<%- include('../commons/footer_common.ejs') %>
+
+		<!-- Custom scripts for this page-->
+		<script src="<%= asset('/js/sweetalert.min.js') %>"></script>
+		<script src="<%= asset('/js/custom/professor/criterio_create.js') %>"></script>
+	</div>
+</body>
+
+</html>

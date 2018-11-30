@@ -21,4 +21,9 @@ Categoria.getAll = function() {
     return Query.run(query)
 }
 
+Categoria.create = function(name) {
+    var query = "insert into proposta (nome, arquivo, json_template) VALUES (@name, '0', '{}')"
+    return Query.run(query, {name: name})
+}
+
 module.exports = Categoria

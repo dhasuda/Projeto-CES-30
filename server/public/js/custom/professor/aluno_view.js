@@ -17,7 +17,7 @@ $(document).ready(function() {
         table.draw()
         for(var i = 0; i < data.length; i++) {
             table.row.add([
-                data[i].rm_aluno,
+                data[i].id_aluno,
                 data[i].nome,
                 data[i].turma,
                 data[i].unidade

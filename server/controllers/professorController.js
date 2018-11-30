@@ -5,6 +5,7 @@ var Prova = require('../models/prova')
 var Unidade = require('../models/unidade')
 var State = require('../models/state')
 var datetime = require('../utils/datetime')
+var Criterio = require('../models/criterio')
 
 exports.getLoginPage = (req, res) => {
     console.log('req', req.user)
@@ -13,6 +14,40 @@ exports.getLoginPage = (req, res) => {
 
 exports.propostaCreate = (req, res) => {
     res.render('professor/proposta_create.ejs')
+}
+
+exports.categoriaCreate = (req, res) => {
+    res.render('professor/categoria_create.ejs')
+}
+
+exports.criterioCreate = (req, res) => {
+    if(req.query.json) {
+        Categoria.getAll().then(result => {
+            const data = result
+            res.send(JSON.stringify(data))
+            
+        }).catch(err => {
+            res.send(err)
+        })
+    } else {
+        res.render('professor/criterio_create.ejs')
+    }
+}
+
+exports.criterioCreatePost = (req, res) => {
+    const data = {
+        nome: req.body.name,
+        descricao: req.body.description,
+        nota_total: parseInt(req.body.totalgrade),
+        id_categoria: parseInt(req.body.category),
+        passo: parseFloat(req.body.passo)
+    }
+
+    Criterio.new(data).then(() => {
+        res.json({success: true});
+    }, err =>  {
+        res.json({success: false});
+    })
 }
 
 exports.propostaView = (req, res) => {
@@ -137,11 +172,46 @@ exports.alunoCreate = (req, res) => {
     }
 }
 
+exports.provasDisponibilizadas = (req, res) => {
+    if(req.query.json) {
+        Prova.findByStateAndCoordenador(req.user.id_professor, [State.notSubmitted(), State.notCorrected()]).then(result => {
+            data = result
+            res.send(JSON.stringify(data))
+        }).catch(err => {
+            res.send(err)
+        })
+    } else {
+        res.render('professor/prova_view_available.ejs')
+    }
+}
+
+exports.correctProva = (req, res) => {
+    var id = req.params.id
+    res.render('professor/corrigir_prova.ejs', {id: id})
+}
+
+exports.getCriterios = (req, res) => {
+    var id = req.query.id
+    Criterio.getFromProva(id).then(result => {
+        res.send(JSON.stringify(result))
+    }).catch(err => {
+        res.send(JSON.stringify({}))
+    })
+}
+
 exports.uploadProposta = (req, res) => {
     Proposta.create(req.body.nome, req.user.id_professor).then(result => {
         res.send(JSON.stringify({success: true}))
     }).catch(err => {
         res.send(err)
+    })
+}
+
+exports.uploadCategoria = (req, res) => {
+    Categoria.create(req.body.nome).then(() => {
+        res.json({success: true})
+    }).catch(err => {
+        res.json({success: true})
     })
 }
 

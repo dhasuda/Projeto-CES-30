@@ -6,7 +6,9 @@
 	<%- include('../commons/head_datatables.ejs') %>
 
 	<!-- Custom css for this page-->
+	<link href="<%= asset('/css/bootstrap-table.min.css') %>" rel="stylesheet">
 	<link href="<%= asset('/css/custom/file-upload.css') %>" rel="stylesheet">
+	<link href="<%= asset('/css/tempusdominus-bootstrap-4.min.css') %>" rel="stylesheet">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -17,31 +19,37 @@
 	<div class="content-wrapper">
 		<div class="container-fluid">
 			<div class="card mb-3">
-				<div class="card-body ui segment dimmable main_dimmable">
-					<div class="ui active inverted dimmer main_dimmer">
+				<div class="card-body ui segment dimmable">
+					<div class="ui active inverted dimmer">
 						<div class="ui text loader">Carregando...</div>
 					</div>
 					<div class="table-responsive">
 						<table id="table" class="table table-bordered" style="width:100%">
 							<thead>
 								<tr>
-									<th>Nome</th>
-									<th>Quantidade de Prova</th>
+									<th>ID</th>
+									<th>Prova</th>
+									<th>Proposta</th>
+									<th>Aluno</th>
+									<th>Turma</th>
+									<th>Situação</th>
+									<th>Ações</th>
 								</tr>
 							</thead>
 						</table>
 					</div>
 				</div>
 			</div>
-		</div>
-
+        </div>
+        		
 		<!-- Footers-->
 		<%- include('../commons/footer_common.ejs') %>
 		<%- include('../commons/footer_datatables.ejs') %>
 
 		<!-- Custom scripts for this page-->
 		<script src="<%= asset('/js/sweetalert.min.js') %>"></script>
-		<script src="<%= asset('/js/custom/professor/proposta_view.js') %>"></script>
+		<script src="<%= asset('/js/tempusdominus-bootstrap-4.min.js') %>"></script>
+		<script src="<%= asset('/js/custom/professor/prova_view_available.js') %>"></script>
 	</div>
 </body>
 

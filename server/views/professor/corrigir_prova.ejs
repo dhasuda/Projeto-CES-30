@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<%- include('../commons/head_common.ejs') %>
+
+	<!-- Custom css for this page-->
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+
+	<!-- Navigation-->
+    <%- include('nav.ejs') %>
+    
+    <h1>
+        Atribuir nota
+	</h1>
+	<h1 id="id_prova"><%= id %></h1>
+
+	<div class="content-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="card mb-3">
+						<div class="card-body">
+							<form id="submitCreateColetanea">
+								<div id="criterios_notas">
+								</div>
+								<div class="form-group">
+									<input type="text" class="form-control" id="name" placeholder="Nome" required>
+								</div>
+								<div class="form-group">
+									<a id="create_button" class="btn btn-success btn-create text-light">Submeter</a>
+									<button type="submit" id="btn-submit-hide" class="btn btn-success" style="display: none;">Submeter</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4 mb-3">
+					<div class="card">
+						<div class="card-header">
+							Cadastro de Aluno
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footers-->
+		<%- include('../commons/footer_common.ejs') %>
+
+		<!-- Custom scripts for this page-->
+		<script src="<%= asset('/js/sweetalert.min.js') %>"></script>
+		<script src="<%= asset('/js/tempusdominus-bootstrap-4.min.js') %>"></script>
+		<script src="<%= asset('/js/custom/professor/corrigir_prova.js') %>"></script>
+	</div>
+</body>
+
+</html>
