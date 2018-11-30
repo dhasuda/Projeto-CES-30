@@ -6,20 +6,13 @@ var Prova = function(data) {
 
 Prova.prototype.data = {}
 
-Prova.savePackage = function(id) {
-    var query = ''
-
-    commonData.categorias.forEach(categoria => {
-        students.forEach(function(student) {
-            const singleQuery = `INSERT INTO prova (estado, datahora_criacao, datahora_validade, arquivo, pacote, id_aluno, id_professor, id_categoria, id_coletanea, semana) ` + 
-                `VALUES ('${commonData.estado}', '${commonData.datahora_criacao}', '${commonData.datahora_validade}', '${commonData.arquivo}', ` +
-                `'${commonData.pacote}', ${student}, ${commonData.rm_coordenador}, ${categoria}, ${commonData.id_coletanea}, '${commonData.semana}'); `
-
-            query += singleQuery
-        })
-    })
+Prova.savePackage = function(data) {
+    var query = " INSERT INTO prova (estado, datahora_criacao, datahora_validade, arquivo, pacote, id_aluno, id_professor, id_categoria, id_proposta, semana) " +
+                " select @estado, @datahora_criacao, @datahora_validade, '', '', a.id_aluno, @id_professor, @id_categoria, @id_proposta, @semana " +
+                " from aluno a " +
+                " where a.turma in (@turmas) "
     
-    return Query.run(query)
+    return Query.run(query, data)
 }
 
 module.exports = Prova

@@ -34,7 +34,7 @@ $(document).ready(function() {
         // coletaneas
         $('#spColetanea').empty();
         for(var i = 0; i < data.coletaneas.length; i++) {
-            $('#spColetanea').append('<option value="' + data.coletaneas[i].id_coletanea + '">' + data.coletaneas[i].nome + '</option>');
+            $('#spColetanea').append('<option value="' + data.coletaneas[i].id_proposta + '">' + data.coletaneas[i].nome + '</option>');
         }
         $('#spColetanea').selectpicker('refresh');
 
@@ -88,11 +88,6 @@ $(document).ready(function() {
         }
     });
 
-    $('#table tbody').on('click', 'tr', function () {
-        console.log('HERE')
-        $(this).toggleClass('selected');
-    });
-
     // datetime picker
     $('#dateInput').datetimepicker({
         minDate: moment(),
@@ -107,45 +102,44 @@ $(document).ready(function() {
         var datalimite;
         var url;
         var semana;
+        var turmas;
 
-        if(table.rows('.selected').data().length == 0) {
-            swal("Ops!", "Nenhuma redação selecionada");
-        } else {
-            for(var i = 0; i < table.rows('.selected').data().length; i++) {
-                selected_alunos.push(table.rows('.selected').data()[i][0]);
-            }
-            coletanea = $('#spColetanea').val();
-            categoria = $('#spCategoria').val();
-            semana = $('#semana').val()
-            datalimite = convertDateToUTC(moment($('#date').val(), 'DD/MM/YYYY HH:mm')).format('DD/MM/YYYY HH:mm').toString();
-            url = '/professor/aluno/delegar';
-
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: {
-                    alunos: selected_alunos,
-                    coletanea: coletanea,
-                    categoria: categoria,
-                    arquivo: '',
-                    datalimite: datalimite,
-                    semana: semana
-                },
-                success: function() {
-                    swal({
-                        text: "Propostas Disponibilizadas!",
-                        icon: "success",
-                        timer: 2000,
-                        closeOnEsc: false,
-                        closeOnClickOutside: false,
-                        buttons: false
-                    }).then(function() {
-                        $('#frmCreateRedacao').trigger('reset');
-                        location.reload();
-                    })
-                }
-            })
+        for(var i = 0; i < table.rows('.selected').data().length; i++) {
+            selected_alunos.push(table.rows('.selected').data()[i][0]);
         }
+        turmas = $('#spTurmas').val()
+        coletanea = $('#spColetanea').val();
+        categoria = $('#spCategoria').val();
+        semana = $('#semana').val()
+        datalimite = convertDateToUTC(moment($('#date').val(), 'DD/MM/YYYY HH:mm')).format('DD/MM/YYYY HH:mm').toString();
+        url = '/professor/aluno/delegar';
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {
+                coletanea: coletanea,
+                categoria: categoria,
+                arquivo: '',
+                datalimite: datalimite,
+                semana: semana,
+                turmas: turmas
+            },
+            success: function() {
+                swal({
+                    text: "Provas Disponibilizadas!",
+                    icon: "success",
+                    timer: 2000,
+                    closeOnEsc: false,
+                    closeOnClickOutside: false,
+                    buttons: false
+                }).then(function() {
+                    $('#frmCreateRedacao').trigger('reset');
+                    location.reload();
+                })
+            }
+        })
+    
         e.preventDefault();
     });
 

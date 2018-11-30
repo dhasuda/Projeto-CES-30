@@ -3,6 +3,8 @@ var Categoria = require('../models/categoria')
 var Aluno = require('../models/aluno')
 var Prova = require('../models/prova')
 var Unidade = require('../models/unidade')
+var State = require('../models/state')
+var datetime = require('../utils/datetime')
 
 exports.getLoginPage = (req, res) => {
     console.log('req', req.user)
@@ -162,14 +164,17 @@ exports.createProva = (req, res) => {
         pacote: datetime.getDateTime(),
         id_categoria: req.body.categoria,
         categorias: req.body.categoria,
-        id_coletanea: req.body.coletanea,
+        id_proposta: req.body.coletanea,
         semana: req.body.semana,
-        rm_coordenador: req.user.id_professor
+        id_professor: req.user.id_professor,
+        turmas: req.body.turmas
     }
-    
-    var students = req.body.alunos
-    console.log('HERE', data, students)
-    res.json({success: true});
+
+    Prova.savePackage(data).then(() => {
+        res.json({success: true});
+    }).catch(err => {
+        res.json({success: false});
+    })
 }
 
 exports.alunoCreatePost = (req, res) => {
